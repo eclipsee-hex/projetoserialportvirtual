@@ -41,4 +41,8 @@ class SerialApp:
         
         if self.serial_manager.connect(port):
             self.send_button.config(state=tk.NORMAL)
+            self.disconnect_button.config(state=tk.NORMAL)
+            self.connect_button.config(state=tk.DISABLED)
+            messagebox.showerror("Erro", "Erro ao conectar à porta serial.")
+            
             
