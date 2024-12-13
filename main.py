@@ -16,7 +16,7 @@ try:
     print(f'Conectado à porta {ser.portstr}')
 
 
-    dados = "Olá, estou enviando dados pela serial!"
+    dados = "Olá, envio realizado com sucesso!"
     ser.write(dados.encode())  
     print(f'Dados enviados: {dados}')
     
