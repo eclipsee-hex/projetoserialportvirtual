@@ -11,8 +11,12 @@ else:
         print(f'Porta encontrada: {port.device}')
 
 try:
-    ser = serial.Serial('COM1', baudrate=9600, timeout=1, parity=serial.PARITY_NONE,
-                        stopbits=serial.STOPBITS_ONE, bytesize=serial.EIGHTBITS)
+    ser = serial.Serial('COM2', 
+                        baudrate=9600, 
+                        timeout=1, 
+                        parity=serial.PARITY_NONE,
+                        stopbits=serial.STOPBITS_ONE, 
+                        bytesize=serial.EIGHTBITS)
     print(f'Conectado à porta {ser.portstr}')
 
 
