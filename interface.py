@@ -28,5 +28,17 @@ class SerialApp:
         
         self.disconnect_button = tk.Button(root, text="desconectar", command=self.disconnect, state=tk.DISABLED)
         self.disconnect_button.grid(row=3, column=0, columnspan=2, pady=5)
+    def update_ports(self):
+        ports = self.serial_manager.get_ports()
+        self.port_var.set(ports[0] if ports else "nenhuma porta encontrada")
+        self.port_menu = tk.OptionMenu(self.root, self.port_var, *ports) 
+        self.port_menu.grid(row=0, column=1, padx=10, pady=5)
+    def connect(self)    :
+        port = self.port_var.get()
+        if not port or port == "nenhuma porta encontrada":
+            messagebox.showerror("erro", "Seleciona uma porta valida!!!")
+            return
         
-        
+        if self.serial_manager.connect(port):
+            self.send_button.config(state=tk.NORMAL)
+            
