@@ -31,4 +31,9 @@ class SerialManager:
             except Exception:
                 return False
         return False
-        
+    
+    def disconnect(self):
+        if self.serial_connection and self.serial_connection.is_open:
+            self.serial_connection.close()
+            return True
+        return False
