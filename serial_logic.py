@@ -1,6 +1,7 @@
 import serial
 import serial.tools.list_ports
 
+
 class SerialManager:
     def __init__(self):
         self.serial_connection = None

@@ -44,5 +44,28 @@ class SerialApp:
             self.disconnect_button.config(state=tk.NORMAL)
             self.connect_button.config(state=tk.DISABLED)
             messagebox.showerror("Erro", "Erro ao conectar à porta serial.")
+        else:
+            messagebox.showerror("Erro", "Errp ao conectar na serial")
             
+    def send_data(self):
+        data = self.data_entry.get()
+        if not data:
+            messagebox.showwarning("Atenção", "Insira dados para enviar.")
+            return
+        if self.serial_manager.send_data(data):
+            messagebox.showinfo("Enviado", f"dados enviados: {data}")
+        else:
+            messagebox.showerror("Erro", "Errp ao enviar dados.")
+    
+    def disconnect(self):
+        if self.serial_manager.disconnect():
+            self.send_button.config(state=tk.DISABLED)
+            self.disconnect_button.config(state=tk.DISABLED)
+            self.connect_button.config(state=tk.NORMAL)
+            messagebox.showinfo("Desconectado", "Conexão Serial encerrada.")
             
+if __name__ == "__main__":
+         root = tk.Tk()
+         app = SerialApp(root)
+         root.mainloop()
+         
